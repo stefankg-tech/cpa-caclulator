@@ -1,0 +1,32 @@
+// A simple JavaScript calculator for calculating Optin CPA, Call CPA, and Sale CPA
+
+function calculateCPA(CPC, optinCR, optinToCallCR, callToSaleCR) {
+  // Convert percentages to decimals
+  const optinCRDecimal = optinCR / 100;
+  const optinToCallCRDecimal = optinToCallCR / 100;
+  const callToSaleCRDecimal = callToSaleCR / 100;
+
+  // Calculate CPAs
+  const optinCPA = CPC / optinCRDecimal;
+  const callCPA = optinCPA / optinToCallCRDecimal;
+  const saleCPA = callCPA / callToSaleCRDecimal;
+
+  // Return results
+  return {
+    optinCPA: optinCPA.toFixed(2),
+    callCPA: callCPA.toFixed(2),
+    saleCPA: saleCPA.toFixed(2)
+  };
+}
+
+// Example usage
+// Replace these values with your inputs
+const CPC = 2.0; // Cost per click
+const optinCR = 20; // Opt-in conversion rate (%)
+const optinToCallCR = 50; // Opt-in to call conversion rate (%)
+const callToSaleCR = 25; // Call to sale conversion rate (%)
+
+const results = calculateCPA(CPC, optinCR, optinToCallCR, callToSaleCR);
+console.log("Optin CPA:", `$${results.optinCPA}`);
+console.log("Call CPA:", `$${results.callCPA}`);
+console.log("Sale CPA:", `$${results.saleCPA}`);
